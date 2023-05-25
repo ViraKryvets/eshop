@@ -1,12 +1,3 @@
-# FactoryBot.define do
-#   factory :order do
-#     firstname { "MyString" }
-#     lastname { "MyString" }
-#     address { "MyString" }
-#     phone { "MyString" }
-#   end
-# end
-
 FactoryBot.define do
   factory :order do
     firstname { Faker::Name.first_name }
