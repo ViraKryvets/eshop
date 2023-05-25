@@ -15,10 +15,6 @@ RSpec.describe ProductOrder, type: :model do
   end
 
   context 'validations' do
-    # it 'is valid with valid attributes' do
-    #   expect(product_order).to be_valid
-    # end
-    
     it 'is invalid with an amount <= 0' do
       product_order.amount = -10
       expect(product_order).not_to be_valid
@@ -27,18 +23,5 @@ RSpec.describe ProductOrder, type: :model do
       expect(product_order).not_to be_valid
     end
   end
-
-  # context 'associations' do
-  #   it 'belongs to a product' do
-  #     association = described_class.reflect_on_association(:product)
-  #     expect(association.macro).to eq :belongs_to
-  #   end
-
-  #   it 'belongs to an order' do
-  #     association = described_class.reflect_on_association(:order)
-  #     expect(association.macro).to eq :belongs_to
-  #   end
-  # end
-  
 end
 

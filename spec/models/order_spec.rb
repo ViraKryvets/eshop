@@ -11,11 +11,7 @@ RSpec.describe Order, type: :model do
   end
 
   context 'validations' do
-
-    # it 'is valid with valid attributes' do
-    #   expect(order).to be_valid
-    # end
-          
+    
     it 'is invalid without a firstname' do
       order.firstname = nil
       expect(order).not_to be_valid
