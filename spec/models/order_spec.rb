@@ -4,8 +4,8 @@ RSpec.describe Order, type: :model do
   let(:order) { FactoryBot.build(:order) }
 
   describe 'validations' do
-    it { should validate_presence_of(:firstname) }
-    it { should validate_presence_of(:lastname) }
+    it { should validate_presence_of(:first_name) }
+    it { should validate_presence_of(:last_name) }
     it { should validate_presence_of(:address) }
     it { should validate_presence_of(:phone) }
   end
@@ -13,12 +13,12 @@ RSpec.describe Order, type: :model do
   context 'validations' do
     
     it 'is invalid without a firstname' do
-      order.firstname = nil
+      order.first_name = nil
       expect(order).not_to be_valid
     end
 
     it 'is invalid without a lastname' do
-      order.lastname = nil
+      order.last_name = nil
       expect(order).not_to be_valid
     end
 
