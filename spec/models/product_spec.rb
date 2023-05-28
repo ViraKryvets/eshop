@@ -9,15 +9,5 @@ RSpec.describe Product, type: :model do
     it { should validate_numericality_of(:price).is_greater_than(0) }
     it { should validate_numericality_of(:balance).is_greater_than_or_equal_to(0) }
   end
-
-  context "when price <= 0" do
-    it "is invalid" do
-      product.price = -10
-      expect(product).not_to be_valid
-
-      product.price = 0
-      expect(product).not_to be_valid
-    end
-  end
 end
 

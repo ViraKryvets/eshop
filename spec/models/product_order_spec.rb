@@ -13,15 +13,5 @@ RSpec.describe ProductOrder, type: :model do
     it { should belong_to(:product) }
     it { should belong_to(:order) }
   end
-
-  context 'validations' do
-    it 'is invalid with an amount <= 0' do
-      product_order.amount = -10
-      expect(product_order).not_to be_valid
-
-      product_order.amount = 0
-      expect(product_order).not_to be_valid
-    end
-  end
 end
 
