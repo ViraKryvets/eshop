@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :product_order do
-    product { nil }
-    order { nil }
+    product
+    order
     amount { Faker::Number.digit }
   end
 end
