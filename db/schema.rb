@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_163703) do
   create_table "product_orders", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "order_id", null: false
-    t.integer "amount", default: 0, null: false
+    t.integer "amount", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_product_orders_on_order_id"
