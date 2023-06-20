@@ -1,0 +1,52 @@
+<div class="flex flex-col">
+  <% if notice.present? %>
+      <p class="inline-block px-3 py-2 mb-5 font-medium text-green-500 rounded-lg bg-green-50" id="notice"><%= notice %></p>
+  <% end %>
+  <h1 class="mb-4 text-2xl font-bold">Order Details</h1>
+
+  <div class="mb-4">
+    <table class="w-full">
+      <thead>
+        <tr>
+          <th class="px-4 py-2">Product</th>
+          <th class="px-4 py-2">Price</th>
+          <th class="px-4 py-2">Quantity</th>
+          <th class="px-4 py-2">Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% sum_order = 0 %>
+        <% @order.product_orders.each do |product_order| %>
+          <tr>
+            <td class="px-4 py-2"><%= product_order.product.name %></td>
+            <td class="px-4 py-2"><%= product_order.product.price %></td>
+            <td class="px-4 py-2"><%= product_order.amount %></td>
+            <td class="px-4 py-2"><%= product_order.product.price * product_order.amount %></td>
+          </tr>
+          <% sum_order += product_order.product.price * product_order.amount %>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th class="px-4 py-2" colspan="3">Total Amount:</th>
+          <td class="px-4 py-2"><%= sum_order %></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="mb-4">
+    <h2 class="text-xl font-bold">Order Information</h2>
+  </div>
+
+  <div class="mb-4">
+    <ul>
+      <li><strong>Order Number:</strong> <%= rand(10000..99999) %></li>
+      <li><strong>First Name:</strong> <%= @order.first_name %></li>
+      <li><strong>Last Name:</strong> <%= @order.last_name %></li>
+      <li><strong>Address:</strong> <%= @order.address %></li>
+      <li><strong>Phone:</strong> <%= @order.phone %></li>
+    </ul>
+  </div>
+
+</div>
