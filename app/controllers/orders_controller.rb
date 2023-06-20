@@ -69,7 +69,4 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:first_name, :last_name, :address, :phone)
     end
 
-    # def cart
-    #   session[:cart] ||= {}
-    # end
 end

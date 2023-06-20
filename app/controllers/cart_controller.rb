@@ -19,7 +19,7 @@ class CartController < ApplicationController
   def update
     product_id = params[:product_id]
     quantity = params[:quantity].to_i
-    cart[product_id] = quantity if quantity > 0
+    cart[product_id] = quantity
 
     redirect_to cart_path, notice: 'Cart updated.'
   end
@@ -40,9 +40,4 @@ class CartController < ApplicationController
     @order = Order.new
   end
 
-  # private
-
-  # def cart
-  #   session[:cart] ||= {}
-  # end
 end
