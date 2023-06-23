@@ -11,14 +11,14 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body style="position: relative; min-height: 91vh;">
+  <body class="flex flex-col min-h-screen">
+    <%= render "layouts/header" %>
+    <%= render "layouts/notice" %>
 
-    <%=render "layouts/header"%>
-
-    <main class="container flex px-5 mx-auto mt-28" style="padding-bottom: 80px;">
+    <main class="container flex-grow px-5 mx-auto mt-28">
       <%= yield %>
     </main>
 
-    <%=render "layouts/footer"%>
+    <%= render "layouts/footer" %>
   </body>
 </html>

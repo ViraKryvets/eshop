@@ -1,7 +1,49 @@
+<div class="w-full mx-auto md:w-1/2">
+  <h1 class="text-4xl font-bold text-center">New Order</h1>
+  <br>
+  <table id = "cart" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" class="px-6 py-3">#</th>
+        <th scope="col" class="px-6 py-3">Product</th>
+        <th scope="col" class="px-6 py-3">Price</th>
+        <th scope="col" class="px-6 py-3">Quantity</th>
+        <th scope="col" class="px-6 py-3">Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cart_items.each.with_index(1) do |cart_item, index| %>
+        <tr>
+          <th class="px-6 py-4 font-medium whitespace-nowrap"><%= index %></th>
+          <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+            <%= cart_item[:product].name %>
+          </td>
+          <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+            <%= cart_item[:price] %>
+          </td>
+          <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+            <%= cart_item[:quantity] %>
+          </td>
+          <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+            <%= cart_item[:subtotal] %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+        <th colspan="4" class="px-6 py-4 text-center whitespace-nowrap">Total:</th>
+        <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white"><%= @total_amount %></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<br>
+<br>
+<br>
 <div class="w-full mx-auto md:w-1/3">
-  <h1 class="text-4xl font-bold">New Order</h1>
 
-  <%= render 'form', order: @order %>
+  <%= render "orders/form", order: @order %>
 
   <%= link_to 'Back to cart', cart_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>

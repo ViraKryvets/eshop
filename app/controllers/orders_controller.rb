@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-  include Cartable
 
   def index
     @orders = collection
@@ -11,6 +10,8 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @cart_items = cart_service.cart_items
+    @total_amount = cart_service.total_amount
   end
 
   def edit
@@ -18,23 +19,12 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = OrderCreationService.new(order_params, cart, session).create_order
 
-    subtotal = 0
-    cart.each do |product_id, quantity|
-      product = Product.find(product_id)
-      price = product.price
-      subtotal += price * quantity
-      @order.product_orders.new(product: product, amount: quantity)
-    end
-
-    @total_amount = subtotal
-
-    if @order.save
-      session[:cart] = nil # Clear the cart
-      redirect_to order_path(@order), notice: 'Order was successfully created.'
+    if @order.persisted?
+      redirect_to order_path(@order), notice: "Order was successfully created."
     else
-      render 'cart/show'
+      render :new
     end
   end
 
@@ -62,11 +52,18 @@ class OrdersController < ApplicationController
     end
 
     def resource
-      Order.find(params[:id])
+      collection.find(params[:id])
     end
 
     def order_params
       params.require(:order).permit(:first_name, :last_name, :address, :phone)
     end
 
+    def cart
+      session[:cart] ||= {}
+    end
+
+    def cart_service
+      CartService.new(session)
+    end
 end

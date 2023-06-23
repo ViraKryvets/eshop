@@ -33,8 +33,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-gem 'simple_form'
-gem 'simple_form-tailwind'
+gem 'simple_form', git: 'https://github.com/loqimean/simple_form'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
