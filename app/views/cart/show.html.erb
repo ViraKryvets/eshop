@@ -1,5 +1,4 @@
 <div class="w-full mx-auto md:w-1/2">
-
   <table id="cart" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
       <tr>
@@ -41,5 +40,5 @@
     </tfoot>
   </table>
 <!-- Make order button -->
-  <%= button_to 'Make Order', new_order_path, method: :get, remote: true, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium", style: "float: right"%>
+  <%= button_to 'Make Order', new_order_path, method: :get, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium", style: "float: right"%>
 </div>
