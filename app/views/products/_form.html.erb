@@ -1,0 +1,7 @@
+<%= simple_form_for product do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :price %>
+    <%= f.input :balance %>
+    <%= f.button :submit, input_html: { class: "bg-blue-500" } %>
+<% end %>
